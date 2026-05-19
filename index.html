@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="hat">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezo Haïti — Nimewo 1 Platfòm Videyo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .video-container {
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            height: calc(100vh - 135px);
+        }
+        .video-card {
+            scroll-snap-align: start;
+            height: calc(100vh - 135px);
+        }
+        .active-tab {
+            color: #d4af37 !important; /* Koulè Lò VIP */
+        }
+    </style>
+</head>
+<body class="h-screen flex flex-col justify-between overflow-hidden select-none">
+
+    <header class="w-full h-16 border-b border-zinc-900 px-4 flex justify-between items-center bg-zinc-950 z-50">
+        <h1 class="text-xl font-black tracking-wider text-amber-500">REZO <span class="text-white">HAÏTI</span></h1>
+        <div class="flex items-center gap-3">
+            <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2 py-0.5 rounded">VIP</span>
+            <div class="bg-zinc-900 border border-zinc-800 px-3 py-1 rounded-lg flex items-center gap-2">
+                <i class="fa-solid fa-wallet text-amber-400 text-xs"></i>
+                <span class="text-xs font-mono font-bold text-green-400">2,500 HTG</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 flex max-w-md w-full mx-auto relative bg-black border-x border-zinc-900">
+
+        <div id="section-home" class="w-full video-container no-scrollbar block">
+            <div id="video-feed-wrapper">
+                </div>
+        </div>
+
+        <div id="section-discover" class="w-full p-4 overflow-y-auto no-scrollbar hidden bg-zinc-950">
+            <h2 class="text-lg font-bold text-amber-400 mb-4"><i class="fa-solid fa-fire mr-2"></i> Tandans pou ou</h2>
+            <div class="relative mb-4">
+                <input type="text" placeholder="Chèche videyo, kreyatè..." class="w-full bg-zinc-900 border border-zinc-800 rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:border-amber-500">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-500 text-sm"></i>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+                <div class="h-40 bg-zinc-900 rounded-lg flex items-end p-2 relative overflow-hidden bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=500');">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                    <span class="text-xs font-semibold relative z-10">#MizikAyisyen</span>
+                </div>
+                <div class="h-40 bg-zinc-900 rounded-lg flex items-end p-2 relative overflow-hidden bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=500');">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                    <span class="text-xs font-semibold relative z-10">#HaïtiTech</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-inbox" class="w-full p-4 overflow-y-auto hidden bg-zinc-950">
+            <h2 class="text-lg font-bold text-amber-400 mb-4"><i class="fa-solid fa-message mr-2"></i> Mesaj ak Notifikasyon</h2>
+            <div class="space-y-4">
+                <div class="flex items-center gap-3 p-3 bg-zinc-900/50 rounded-lg border border-zinc-900">
+                    <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center font-bold text-black">G</div>
+                    <div class="flex-1">
+                        <h4 class="text-sm font-bold">Germain Booster</h4>
+                        <p class="text-xs text-gray-400">Sistèm pwofesyonèl la pare nèt.</p>
+                    </div>
+                    <span class="text-[10px] text-gray-500">Kounye a</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-profile" class="w-full overflow-y-auto no-scrollbar hidden bg-black">
+            <div class="flex flex-col items-center pt-6 pb-4 px-4 border-b border-zinc-900">
+                <div class="relative mb-3">
+                    <div class="w-24 h-24 rounded-full bg-zinc-800 border-2 border-amber-500 flex items-center justify-center overflow-hidden">
+                        <i class="fa-solid fa-user text-4xl text-gray-600"></i>
+                    </div>
+                    <button class="absolute bottom-0 right-0 bg-blue-500 w-7 h-7 rounded-full flex items-center justify-center border-2 border-black">
+                        <i class="fa-solid fa-plus text-xs text-white"></i>
+                    </button>
+                </div>
+                <h3 class="text-base font-bold flex items-center gap-1 text-amber-400">
+                    <i class="fa-solid fa-lock text-xs text-gray-400"></i> <span id="profile-name-display">Mr.Germain Couple</span> <i class="fa-solid fa-circle-check text-blue-400 text-xs"></i>
+                </h3>
+                <p class="text-xs text-gray-500 mt-0.5">@mr.germain.couple</p>
+                
+                <div class="flex gap-8 my-4 text-center">
+                    <div><p class="font-bold text-sm">0</p><p class="text-[11px] text-gray-400">Suivis</p></div>
+                    <div><p class="font-bold text-sm" id="follower-count">108</p><p class="text-[11px] text-gray-400">Followers</p></div>
+                    <div><p class="font-bold text-sm">183</p><p class="text-[11px] text-gray-400">J'aime</p></div>
+                </div>
+
+                <p class="text-xs text-gray-300 text-center max-w-xs px-2">
+                    <i class="fa-solid fa-heart text-red-500 mr-1"></i> Des couples, des secrets, des choix... <br>
+                    <i class="fa-solid fa-lock text-amber-400 mr-1"></i> Mr. Germain vous fait vivre l'essentiel.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-0.5 p-0.5">
+                <div class="aspect-[9/16] bg-zinc-900 relative flex items-end p-1">
+                    <span class="text-[10px] text-white font-mono"><i class="fa-solid fa-play mr-1"></i> 139</span>
+                </div>
+                <div class="aspect-[9/16] bg-zinc-900 relative flex items-end p-1">
+                    <span class="text-[10px] text-white font-mono"><i class="fa-solid fa-play mr-1"></i> 2.5K</span>
+                </div>
+                <div class="aspect-[9/16] bg-zinc-800/40 relative flex items-center justify-center">
+                    <i class="fa-solid fa-lock text-zinc-600"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="section-settings" class="w-full p-4 overflow-y-auto hidden bg-zinc-950">
+            <h2 class="text-lg font-bold text-amber-400 mb-4"><i class="fa-solid fa-gear mr-2"></i> Paramètres du Compte</h2>
+            <div class="space-y-2">
+                <div class="p-3 bg-zinc-900 rounded-lg flex justify-between items-center">
+                    <span class="text-sm">Chanje Non Pwofil</span>
+                    <input type="text" id="input-edit-name" value="Mr.Germain Couple" class="bg-black border border-zinc-800 rounded px-2 py-1 text-xs text-amber-400 w-40 text-right focus:outline-none">
+                </div>
+                <div class="p-3 bg-zinc-900 rounded-lg flex justify-between items-center">
+                    <span class="text-sm">Lang App la</span>
+                    <span class="text-xs text-gray-400 font-bold">Kreyòl (HT)</span>
+                </div>
+                <div class="p-3 bg-zinc-900 rounded-lg flex justify-between items-center">
+                    <span class="text-sm">Sekirite Kont</span>
+                    <span class="text-xs text-green-400 font-bold">Aktif <i class="fa-solid fa-shield-check"></i></span>
+                </div>
+                <button onclick="saveSettings()" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-bold py-2.5 rounded-lg text-sm mt-4 transition-colors">
+                    Sove Chanjman Yo
+                </button>
+            </div>
+        </div>
+
+        <div id="modal-create" class="absolute inset-0 bg-black/95 z-50 hidden p-6 flex flex-col justify-center">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-black text-white tracking-wide">Kreye Kontni & Paj Pa w</h3>
+                <button onclick="toggleModal('modal-create', false)" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+            </div>
+            
+            <div class="space-y-5">
+                <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl">
+                    <label class="block text-xs font-bold text-blue-400 uppercase tracking-wider mb-2">Kreye yon nouvo paj</label>
+                    <input type="text" placeholder="Bay paj ou a yon non pwofesyonèl..." class="w-full bg-black border border-zinc-800 rounded-lg p-2.5 text-sm focus:outline-none focus:border-blue-500">
+                    <button onclick="actionNotification('Paj la ap kreye...')" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2.5 rounded-lg mt-3 transition-colors">Lanse Paj la</button>
+                </div>
+                <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl">
+                    <label class="block text-xs font-bold text-green-400 uppercase tracking-wider mb-2">Kreye yon nouvo gwoup</label>
+                    <input type="text" placeholder="Non gwoup kominikasyon an..." class="w-full bg-black border border-zinc-800 rounded-lg p-2.5 text-sm focus:outline-none focus:border-green-500">
+                    <button onclick="actionNotification('Gwoup la ap mete an liy...')" class="w-full bg-green-600 hover:bg-green-700 text-white text-xs font-bold py-2.5 rounded-lg mt-3 transition-colors">Mete Gwoup la an liy</button>
+                </div>
+                <div class="p-4 bg-zinc-900/50 border border-zinc-800 rounded-xl">
+                    <label class="block text-xs font-bold text-red-400 uppercase tracking-wider mb-2">Lage yon videyo (MP4 URL)</label>
+                    <input type="text" id="input-video-url" placeholder="Kole lyen videyo MP4 ou a la..." class="w-full bg-black border border-zinc-800 rounded-lg p-2.5 text-sm focus:outline-none focus:border-red-500">
+                    <button onclick="pibliyeVideyo()" class="w-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-2.5 rounded-lg mt-3 transition-colors">Pibliye sou Feed la</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="comment-panel" class="absolute bottom-0 left-0 right-0 h-2/3 bg-zinc-950 border-t border-zinc-800 rounded-t-2xl z-50 hidden flex flex-col p-4">
+            <div class="flex justify-between items-center border-b border-zinc-900 pb-2 mb-2">
+                <span class="text-xs font-bold text-zinc-400" id="comment-count-title">0 kòmantè</span>
+                <button onclick="toggleComments(false)" class="text-zinc-400 hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="comments-list" class="flex-1 overflow-y-auto space-y-3 no-scrollbar text-sm py-2">
+                </div>
+            <div class="flex gap-2 border-t border-zinc-900 pt-2">
+                <input type="text" id="new-comment-input" placeholder="Ajoute yon kòmantè an tan reyèl..." class="flex-1 bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-xs focus:outline-none focus:border-amber-500">
+                <button onclick="postComment()" class="bg-amber-500 text-black px-4 rounded-lg text-xs font-bold">Voye</button>
+            </div>
+        </div>
+
+    </div>
+
+    <nav class="w-full h-16 border-t border-zinc-900 bg-zinc-950 flex justify-around items-center max-w-md mx-auto z-40">
+        <button onclick="switchTab('home', this)" class="flex flex-col items-center gap-1 text-gray-500 active-tab">
+            <i class="fa-solid fa-house text-lg"></i>
+            <span class="text-[10px]">Home</span>
+        </button>
+        <button onclick="switchTab('discover', this)" class="flex flex-col items-center gap-1 text-gray-500">
+            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+            <span class="text-[10px]">Discover</span>
+        </button>
+        <button onclick="toggleModal('modal-create', true)" class="flex flex-col items-center justify-center bg-gradient-to-r from-blue-500 via-white to-red-500 p-[2px] rounded-xl w-12 h-8">
+            <div class="bg-black w-full h-full rounded-xl flex items-center justify-center">
+                <i class="fa-solid fa-plus text-white text-xs"></i>
+            </div>
+        </button>
+        <button onclick="switchTab('inbox', this)" class="flex flex-col items-center gap-1 text-gray-500">
+            <div class="relative">
+                <i class="fa-solid fa-inbox text-lg"></i>
+                <span class="absolute -top-1 -right-1.5 bg-blue-500 text-white font-mono text-[8px] w-3.5 h-3.5 rounded-full flex items-center justify-center">2</span>
+            </div>
+            <span class="text-[10px]">Inbox</span>
+        </button>
+        <button onclick="switchTab('profile', this)" class="flex flex-col items-center gap-1 text-gray-500">
+            <i class="fa-solid fa-user text-lg"></i>
+            <span class="text-[10px]">Paj Mwen</span>
+        </button>
+        <button onclick="switchTab('settings', this)" class="flex flex-col items-center gap-1 text-gray-500">
+            <i class="fa-solid fa-gear text-lg"></i>
+            <span class="text-[10px]">Paramètres</span>
+        </button>
+    </nav>
+
+    <script>
+        // Done Videyo ki Sèvi kòm "Anti-TikTok Stream" san blokaj sèvè
+        let videosData = [
+            {
+                id: 1,
+                author: "@rezo_haiti_trends",
+                desc: "G-CASH HUB vin tounen Rezo Haïti! Gade vrè videyo san w pa kite platfòm nan epi kòmanse bati rèv ou.",
+                likes: "25.4K",
+                comments: [
+                    { user: "@jean_90", text: "Waw sit sa bèl anpil!" },
+                    { user: "@haiti_vip", text: "Premye rezo nèt ale" }
+                ],
+                url: "https://assets.mixkit.co/videos/preview/mixkit-girl-in-neon-sign-light-dancing-40026-large.mp4"
+            },
+            {
+                id: 2,
+                author: "@germain_booster",
+                desc: "Premye tès sistèm videyo a sou Vercel pou G-CASH HUB. Tout bagay ap jwe korekteman san lagg.",
+                likes: "12.4K",
+                comments: [
+                    { user: "@alex_tech", text: "Sistèm nan rapid tonton!" }
+                ],
+                url: "https://assets.mixkit.co/videos/preview/mixkit-web-developer-working-on-his-computer-34282-large.mp4"
+            }
+        ];
+
+        let currentVideoId = 1;
+
+        // Chaje videyo yo nan HTML la lè paj la louvri
+        function renderVideos() {
+            const container = document.getElementById('video-feed-wrapper');
+            container.innerHTML = "";
+            
+            videosData.forEach(video => {
+                container.innerHTML += `
+                    <div class="video-card w-full relative bg-zinc-950 flex items-center justify-center border-b border-zinc-900">
+                        <video id="vid-${video.id}" class="w-full h-full object-cover" loop muted playsinline onclick="playPauseVideo(this)" src="${video.url}"></video>
+                        
+                        <div class="absolute right-3 bottom-24 flex flex-col items-center gap-5 z-30">
+                            <div class="flex flex-col items-center" onclick="actionFollow()">
+                                <div class="w-10 h-10 rounded-full bg-zinc-800 border border-amber-500 flex items-center justify-center">
+                                    <i class="fa-solid fa-user text-xs text-amber-400"></i>
+                                </div>
+                                <div class="bg-blue-500 text-white text-[9px] px-1 rounded-full -mt-2">+</div>
+                            </div>
+                            <div class="flex flex-col items-center" onclick="likeVideo(this)">
+                                <i class="fa-solid fa-heart text-2xl text-white cursor-pointer transition-colors"></i>
+                                <span class="text-xs font-mono mt-1">${video.likes}</span>
+                            </div>
+                            <div class="flex flex-col items-center" onclick="openComments(${video.id})">
+                                <i class="fa-solid fa-comment text-2xl text-white cursor-pointer"></i>
+                                <span class="text-xs font-mono mt-1">${video.comments.length}</span>
+                            </div>
+                            <div class="flex flex-col items-center" onclick="actionNotification('Lyen kopye ak siksè!')">
+                                <i class="fa-solid fa-share text-2xl text-white cursor-pointer"></i>
+                                <span class="text-[10px] mt-1">Pataje</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-4 left-4 right-16 z-30 pointer-events-none">
+                            <h4 class="font-bold text-sm text-amber-400 flex items-center gap-1">${video.author} <i class="fa-solid fa-circle-check text-blue-400 text-xs"></i></h4>
+                            <p class="text-xs text-gray-200 mt-1 line-clamp-2">${video.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            // Kòmanse jwe premye videyo a otomatikman
+            setTimeout(() => {
+                let firstVid = document.getElementById('vid-1');
+                if(firstVid) firstVid.play().catch(e => console.log("Otoplay bezwen klik"));
+            }, 500);
+        }
+
+        // Play ak Pause lè ou klike sou ekran an
+        function playPauseVideo(videoElem) {
+            if (videoElem.paused) {
+                videoElem.play();
+            } else {
+                videoElem.pause();
+            }
+        }
+
+        // Navigasyon ant diferan paj yo (Tabs)
+        function switchTab(tabName, btn) {
+            // Kache tout seksyon yo
+            document.getElementById('section-home').classList.add('hidden');
+            document.getElementById('section-discover').classList.add('hidden');
+            document.getElementById('section-inbox').classList.add('hidden');
+            document.getElementById('section-profile').classList.add('hidden');
+            document.getElementById('section-settings').classList.add('hidden');
+            
+            // Louvri sa ki klike a
+            document.getElementById(`section-${tabName}`).classList.remove('hidden');
+            
+            // Chanje koulè bouton ki aktif la
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('active-tab'));
+            if(btn) btn.classList.add('active-tab');
+
+            // Kanpe tout videyo yo si moun nan kite paj Home lan
+            if (tabName !== 'home') {
+                document.querySelectorAll('video').forEach(v => v.pause());
+            } else {
+                let firstVid = document.getElementById('vid-1');
+                if(firstVid) firstVid.play();
+            }
+        }
+
+        // Ouvri ak Fèmen Modals
+        function toggleModal(id, show) {
+            const modal = document.getElementById(id);
+            if(show) modal.classList.remove('hidden');
+            else modal.classList.add('hidden');
+        }
+
+        // Pibliye yon nouvo videyo sou fòma MP4
+        function pibliyeVideyo() {
+            const urlInput = document.getElementById('input-video-url').value;
+            if(!urlInput) {
+                alert('Silvouplè kole yon lyen videyo valid.');
+                return;
+            }
+            
+            let newVid = {
+                id: videosData.length + 1,
+                author: "@mr.germain.couple",
+                desc: "Nouvo videyo eksklizif pibliye an tan reyèl sou Rezo Haïti.",
+                likes: "1",
+                comments: [],
+                url: urlInput
+            };
+            
+            videosData.unshift(newVid); // Mete l an premye nan lis la
+            renderVideos();
+            toggleModal('modal-create', false);
+            switchTab('home');
+            alert('Videyo ou a pibliye avèk siksè!');
+        }
+
+        // Sistèm Like dinamik
+        function likeVideo(iconContainer) {
+            let icon = iconContainer.querySelector('i');
+            if(icon.classList.contains('text-white')) {
+                icon.classList.remove('text-white');
+                icon.classList.add('text-red-500');
+            } else {
+                icon.classList.remove('text-red-500');
+                icon.classList.add('text-white');
+            }
+        }
+
+        function actionFollow() {
+            let currentFollowers = parseInt(document.getElementById('follower-count').innerText);
+            document.getElementById('follower-count').innerText = currentFollowers + 1;
+            alert('Ou swiv kreyatè sa a avèk siksè!');
+        }
+
+        // Sistèm Kòmantè Reyèl
+        function openComments(id) {
+            currentVideoId = id;
+            toggleComments(true);
+            const video = videosData.find(v => v.id === id);
+            document.getElementById('comment-count-title').innerText = `${video.comments.length} kòmantè`;
+            
+            const list = document.getElementById('comments-list');
+            list.innerHTML = "";
+            video.comments.forEach(c => {
+                list.innerHTML += `<div><strong class="text-amber-400">${c.user}:</strong> <span class="text-gray-300">${c.text}</span></div>`;
+            });
+        }
+
+        function toggleComments(show) {
+            const panel = document.getElementById('comment-panel');
+            if(show) panel.classList.remove('hidden');
+            else panel.classList.add('hidden');
+        }
+
+        function postComment() {
+            const input = document.getElementById('new-comment-input');
+            if(!input.value) return;
+            
+            const video = videosData.find(v => v.id === currentVideoId);
+            video.comments.push({ user: "@ou", text: input.value });
+            
+            openComments(currentVideoId); // Refreshe lis la
+            input.value = "";
+        }
+
+        // Sove Paramèt yo
+        function saveSettings() {
+            const newName = document.getElementById('input-edit-name').value;
+            document.getElementById('profile-name-display').innerText = newName;
+            alert('Paramètres mis à jour!');
+            switchTab('profile');
+        }
+
+        function actionNotification(msg) {
+            alert(msg);
+        }
+
+        // Demare aplikasyon an nan chaje videyo yo
+        renderVideos();
+    </script>
+</body>
+</html>
